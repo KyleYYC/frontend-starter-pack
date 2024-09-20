@@ -1,16 +1,22 @@
-import { Button, Typography, Container } from '@mui/material';
+import React from 'react'
+import CustomHeader from './components/organisms/Header/CustomHeader'
+import { Box } from '@mui/material'
+import { useTheme } from '@mui/material/styles'
 
 function App() {
+  const theme = useTheme()
+
+  const appBarHeight =
+    (theme.mixins.toolbar as React.CSSProperties).minHeight || 56
+
   return (
-    <Container>
-      <Typography variant='h1' color='primary'>
-        Welcome to My MUI App
-      </Typography>
-      <Button variant='contained' color='secondary'>
-        Click Me
-      </Button>
-    </Container>
-  );
+    <Box>
+      <CustomHeader />
+      <Box sx={{ mt: `${appBarHeight}px` }}>
+        {/* Rest of your app content */}
+      </Box>
+    </Box>
+  )
 }
 
-export default App;
+export default App
