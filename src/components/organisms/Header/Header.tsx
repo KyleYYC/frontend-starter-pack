@@ -1,16 +1,16 @@
 import React from 'react'
 import {
-    Alignment,
-    HeaderProps,
-    NavLink,
+  Alignment,
+  HeaderProps,
+  NavLink,
 } from '../../../types/components/Header'
 import {
-    StyledAppBar,
-    LogoContainer,
-    NavLinksContainer,
-    NavLinkAnchor,
-    Title,
-    DrawerContent,
+  StyledAppBar,
+  LogoContainer,
+  NavLinksContainer,
+  NavLinkAnchor,
+  Title,
+  DrawerContent,
 } from './Header.styles'
 import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
@@ -33,130 +33,110 @@ import ExpandMore from '@mui/icons-material/ExpandMore'
 /**
  * Component to render navigation links, including nested sub-links for desktop view.
  */
-const NavLinks = React.memo(({
-    links,
-    position,
-}: {
-    links: NavLink[]
-    position: Alignment
-}) => (
+const NavLinks = React.memo(
+  ({ links, position }: { links: NavLink[]; position: Alignment }) => (
     <NavLinksContainer align={position}>
-        {links.map((link) => (
-            <NavLinkItem key={link.label} link={link} />
-        ))}
+      {links.map((link) => (
+        <NavLinkItem key={link.label} link={link} />
+      ))}
     </NavLinksContainer>
-))
+  )
+)
 
 /**
  * Component to render an individual navigation link item with optional sub-links.
  */
-const NavLinkItem = ({
-    link,
-}: {
-    link: NavLink
-}) => {
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+const NavLinkItem = ({ link }: { link: NavLink }) => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
 
-    const handleOpenMenu = (event: React.MouseEvent<HTMLAnchorElement>) => {
-        if (link.subLinks) {
-            event.preventDefault()
-            setAnchorEl(event.currentTarget)
-        }
+  const handleOpenMenu = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (link.subLinks) {
+      event.preventDefault()
+      setAnchorEl(event.currentTarget)
     }
+  }
 
-    const handleCloseMenu = () => {
-        setAnchorEl(null)
-    }
+  const handleCloseMenu = () => {
+    setAnchorEl(null)
+  }
 
-    return (
-        <>
-            <NavLinkAnchor
-                href={link.href || '#'}
-                onClick={handleOpenMenu}
-                aria-haspopup={!!link.subLinks}
-                aria-controls={link.subLinks ? `${link.label}-menu` : undefined}
+  return (
+    <>
+      <NavLinkAnchor
+        href={link.href || '#'}
+        onClick={handleOpenMenu}
+        aria-haspopup={!!link.subLinks}
+        aria-controls={link.subLinks ? `${link.label}-menu` : undefined}
+      >
+        {link.label}
+      </NavLinkAnchor>
+      {link.subLinks && (
+        <Menu
+          id={`${link.label}-menu`}
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleCloseMenu}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+          transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+        >
+          {link.subLinks.map((subLink) => (
+            <MenuItem
+              key={subLink.label}
+              component='a'
+              href={subLink.href}
+              onClick={handleCloseMenu}
             >
-                {link.label}
-            </NavLinkAnchor>
-            {link.subLinks && (
-                <Menu
-                    id={`${link.label}-menu`}
-                    anchorEl={anchorEl}
-                    open={Boolean(anchorEl)}
-                    onClose={handleCloseMenu}
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-                    transformOrigin={{ vertical: 'top', horizontal: 'left' }}
-                >
-                    {link.subLinks.map((subLink) => (
-                        <MenuItem
-                            key={subLink.label}
-                            component="a"
-                            href={subLink.href}
-                            onClick={handleCloseMenu}
-                        >
-                            {subLink.label}
-                        </MenuItem>
-                    ))}
-                </Menu>
-            )}
-        </>
-    )
+              {subLink.label}
+            </MenuItem>
+          ))}
+        </Menu>
+      )}
+    </>
+  )
 }
 
 /**
  * Component to render navigation links in the mobile drawer, including nested sub-links.
  */
-const DrawerNavLinks = ({
-    links,
-}: {
-    links: NavLink[]
-}) => (
-    <List>
-        {links.map((link) => (
-            <DrawerNavLinkItem key={link.label} link={link} />
-        ))}
-    </List>
+const DrawerNavLinks = ({ links }: { links: NavLink[] }) => (
+  <List>
+    {links.map((link) => (
+      <DrawerNavLinkItem key={link.label} link={link} />
+    ))}
+  </List>
 )
 
 /**
  * Component to render an individual navigation link item in the mobile drawer.
  */
-const DrawerNavLinkItem = ({
-    link,
-}: {
-    link: NavLink
-}) => {
-    const [open, setOpen] = React.useState(false)
+const DrawerNavLinkItem = ({ link }: { link: NavLink }) => {
+  const [open, setOpen] = React.useState(false)
 
-    const handleClick = () => {
-        if (link.subLinks) {
-            setOpen((prevOpen) => !prevOpen)
-        }
+  const handleClick = () => {
+    if (link.subLinks) {
+      setOpen((prevOpen) => !prevOpen)
     }
+  }
 
-    return (
-        <>
-            <ListItem onClick={handleClick} component="a" href={link.href}>
-                <ListItemText primary={link.label} />
-                {link.subLinks ? open ? <ExpandLess /> : <ExpandMore /> : null}
-            </ListItem>
-            {link.subLinks && (
-                <Collapse in={open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
-                        {link.subLinks.map((subLink) => (
-                            <ListItem
-                                key={subLink.label}
-                                component="a"
-                                href={subLink.href}
-                            >
-                                <ListItemText primary={subLink.label} />
-                            </ListItem>
-                        ))}
-                    </List>
-                </Collapse>
-            )}
-        </>
-    )
+  return (
+    <>
+      <ListItem onClick={handleClick} component='a' href={link.href}>
+        <ListItemText primary={link.label} />
+        {link.subLinks ? open ? <ExpandLess /> : <ExpandMore /> : null}
+      </ListItem>
+      {link.subLinks && (
+        <Collapse in={open} timeout='auto' unmountOnExit>
+          <List component='div' disablePadding>
+            {link.subLinks.map((subLink) => (
+              <ListItem key={subLink.label} component='a' href={subLink.href}>
+                <ListItemText primary={subLink.label} />
+              </ListItem>
+            ))}
+          </List>
+        </Collapse>
+      )}
+    </>
+  )
 }
 
 /**
@@ -165,134 +145,134 @@ const DrawerNavLinkItem = ({
  * Defaults should be adjusted to user requirements.
  */
 const Header = ({
-    logo,
-    title,
-    links = [],
-    userMenu,
-    onMobileMenuClick,
-    mobileMenuHeightOption = 'full',
-    navLinksPosition = 'right',
-    showLogo = true,
-    showTitle = true,
-    logoAlignment = 'left',
-    titleAlignment = 'left',
-    additionalContent,
-    elevation = 4,
-    position = 'fixed',
-    hideOnScroll = false,
-    themeColor = 'default',
-    customStyles = {},
+  logo,
+  title,
+  links = [],
+  userMenu,
+  onMobileMenuClick,
+  mobileMenuHeightOption = 'full',
+  navLinksPosition = 'right',
+  showLogo = true,
+  showTitle = true,
+  logoAlignment = 'left',
+  titleAlignment = 'left',
+  additionalContent,
+  elevation = 4,
+  position = 'fixed',
+  hideOnScroll = false,
+  themeColor = 'default',
+  customStyles = {},
 }: HeaderProps) => {
-    const theme = useTheme()
-    const isMobile = useMediaQuery(theme.breakpoints.down('md'))
-    const trigger = useScrollTrigger()
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
+  const trigger = useScrollTrigger()
 
-    const [drawerOpen, setDrawerOpen] = React.useState(false)
+  const [drawerOpen, setDrawerOpen] = React.useState(false)
 
-    /**
-     * Toggles the state of the mobile drawer menu.
-     * @param open - Whether the drawer should be open or closed.
-     */
-    const toggleDrawer =
-        (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-            if (
-                event.type === 'keydown' &&
-                ((event as React.KeyboardEvent).key === 'Tab' ||
-                    (event as React.KeyboardEvent).key === 'Shift')
-            ) {
-                return
-            }
+  /**
+   * Toggles the state of the mobile drawer menu.
+   * @param open - Whether the drawer should be open or closed.
+   */
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return
+      }
 
-            setDrawerOpen(open)
-            if (onMobileMenuClick && open) {
-                onMobileMenuClick()
-            }
-        }
+      setDrawerOpen(open)
+      if (onMobileMenuClick && open) {
+        onMobileMenuClick()
+      }
+    }
 
-    const appBarContent = (
-        <StyledAppBar
-            position={position}
-            elevation={elevation}
-            color={themeColor}
-            style={customStyles}
-        >
-            <Toolbar>
-                {(showLogo || showTitle) && (
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            flexGrow: 1,
-                            justifyContent: logoAlignment,
-                        }}
-                    >
-                        {showLogo && logo && (
-                            <LogoContainer align={logoAlignment}>{logo}</LogoContainer>
-                        )}
-                        {showTitle && title && (
-                            <Title align={titleAlignment} variant="h6">
-                                {title}
-                            </Title>
-                        )}
-                    </Box>
-                )}
-
-                {additionalContent && (
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        {additionalContent}
-                    </Box>
-                )}
-
-                {!isMobile && links.length > 0 && (
-                    <NavLinks links={links} position={navLinksPosition} />
-                )}
-
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                    {userMenu}
-                    {isMobile && (
-                        <IconButton
-                            edge="end"
-                            color="inherit"
-                            aria-label="open navigation menu"
-                            onClick={toggleDrawer(true)}
-                            size="large"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                    )}
-                </Box>
-            </Toolbar>
-        </StyledAppBar>
-    )
-
-    return (
-        <>
-            {hideOnScroll ? (
-                <Slide appear={false} direction="down" in={!trigger}>
-                    {appBarContent}
-                </Slide>
-            ) : (
-                appBarContent
+  const appBarContent = (
+    <StyledAppBar
+      position={position}
+      elevation={elevation}
+      color={themeColor}
+      style={customStyles}
+    >
+      <Toolbar>
+        {(showLogo || showTitle) && (
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              flexGrow: 1,
+              justifyContent: logoAlignment,
+            }}
+          >
+            {showLogo && logo && (
+              <LogoContainer align={logoAlignment}>{logo}</LogoContainer>
             )}
-            <Drawer
-                anchor="right"
-                open={drawerOpen}
-                onClose={toggleDrawer(false)}
-                ModalProps={{
-                    keepMounted: true,
-                }}
-                PaperProps={{
-                    style: {
-                        height: mobileMenuHeightOption === 'full' ? '100%' : 'auto',
-                    },
-                }}
+            {showTitle && title && (
+              <Title align={titleAlignment} variant='h6'>
+                {title}
+              </Title>
+            )}
+          </Box>
+        )}
+
+        {additionalContent && (
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            {additionalContent}
+          </Box>
+        )}
+
+        {!isMobile && links.length > 0 && (
+          <NavLinks links={links} position={navLinksPosition} />
+        )}
+
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          {userMenu}
+          {isMobile && (
+            <IconButton
+              edge='end'
+              color='inherit'
+              aria-label='open navigation menu'
+              onClick={toggleDrawer(true)}
+              size='large'
             >
-                <DrawerContent role="presentation" onClick={toggleDrawer(false)}>
-                    <DrawerNavLinks links={links} />
-                </DrawerContent>
-            </Drawer>
-        </>
-    )
+              <MenuIcon />
+            </IconButton>
+          )}
+        </Box>
+      </Toolbar>
+    </StyledAppBar>
+  )
+
+  return (
+    <>
+      {hideOnScroll ? (
+        <Slide appear={false} direction='down' in={!trigger}>
+          {appBarContent}
+        </Slide>
+      ) : (
+        appBarContent
+      )}
+      <Drawer
+        anchor='right'
+        open={drawerOpen}
+        onClose={toggleDrawer(false)}
+        ModalProps={{
+          keepMounted: true,
+        }}
+        PaperProps={{
+          style: {
+            height: mobileMenuHeightOption === 'full' ? '100%' : 'auto',
+          },
+        }}
+      >
+        <DrawerContent role='presentation' onClick={toggleDrawer(false)}>
+          <DrawerNavLinks links={links} />
+        </DrawerContent>
+      </Drawer>
+    </>
+  )
 }
 
 export default Header

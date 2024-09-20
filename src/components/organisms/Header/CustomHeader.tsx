@@ -16,8 +16,8 @@ const CustomHeader = () => {
    */
   const navLinks = [
     {
-        label: 'Home',
-        href: '/',
+      label: 'Home',
+      href: '/',
     },
     {
       label: 'Sub Menu',
@@ -34,22 +34,28 @@ const CustomHeader = () => {
 
   return (
     <Header
-      logo={<img src="src/assets/images/common/logo.png" alt="App Logo" width={100} />}
+      logo={
+        <img
+          src='src/assets/images/common/logo.png'
+          alt='App Logo'
+          width={100}
+        />
+      }
       title={null}
       links={navLinks}
       userMenu={null}
       onMobileMenuClick={handleMobileMenuClick}
-      mobileMenuHeightOption="content"
-      navLinksPosition="center"
+      mobileMenuHeightOption='content'
+      navLinksPosition='center'
       showLogo={true}
       showTitle={true}
-      logoAlignment="left"
-      titleAlignment="center"
+      logoAlignment='left'
+      titleAlignment='center'
       additionalContent={null}
       elevation={2}
-      position="fixed"
+      position='fixed'
       hideOnScroll={true}
-      themeColor="primary"
+      themeColor='primary'
     />
   )
 }
