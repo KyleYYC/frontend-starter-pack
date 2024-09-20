@@ -18,7 +18,7 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.0",
-    "@mui/material": "^6.1.0",
+    "@mui/material": "^6.1.1",
     "axios": "^1.7.7",
     "jwt-decode": "^4.0.0",
     "lodash": "^4.17.21",
