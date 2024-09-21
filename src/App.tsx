@@ -2,6 +2,7 @@ import React from 'react'
 import CustomHeader from './components/organisms/Header/CustomHeader'
 import { Box } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import CustomFooter from './components/organisms/Footer/CustomFooter'
 
 function App() {
   const theme = useTheme()
@@ -12,9 +13,10 @@ function App() {
   return (
     <Box>
       <CustomHeader />
-      <Box sx={{ mt: `${appBarHeight}px` }}>
+      <Box sx={{ mt: `${appBarHeight}px`, minHeight: '100vh' }}>
         {/* Rest of your app content */}
       </Box>
+      <CustomFooter />
     </Box>
   )
 }
