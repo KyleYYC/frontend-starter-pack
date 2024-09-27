@@ -1,8 +1,9 @@
 import React from 'react'
-import CustomHeader from './components/organisms/Header/CustomHeader'
-import { Box } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import CustomHeader from './components/organisms/Header/CustomHeader'
 import CustomFooter from './components/organisms/Footer/CustomFooter'
+import { Box } from '@mui/material'
+import HomePageExampleTemplate from './components/templates/Examples/HomePage/HomePageExampleTemplate'
 
 function App() {
   const theme = useTheme()
@@ -11,13 +12,11 @@ function App() {
     (theme.mixins.toolbar as React.CSSProperties).minHeight || 56
 
   return (
-    <Box>
+    <>
       <CustomHeader />
-      <Box sx={{ mt: `${appBarHeight}px`, minHeight: '100vh' }}>
-        {/* Rest of your app content */}
-      </Box>
+        <HomePageExampleTemplate />
       <CustomFooter />
-    </Box>
+    </>
   )
 }
 
