@@ -9,9 +9,6 @@ import { Typography } from '@mui/material'
  * Example implementation of the Footer component with custom configurations.
  */
 const CustomFooter = () => {
-  /**
-   * Footer link groups to display in the footer.
-   */
   const footerLinks = [
     [
       { label: 'Company' },
@@ -23,8 +20,8 @@ const CustomFooter = () => {
       { label: 'Support' },
       { label: 'Help Center', href: '/help' },
       { label: 'Contact Us', href: '/contact' },
-      { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Terms of Service', href: '/terms' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Terms of Service', href: '/terms-of-service' },
     ],
     [
       { label: 'Resources' },
@@ -34,9 +31,6 @@ const CustomFooter = () => {
     ],
   ]
 
-  /**
-   * Social media links to display in the footer.
-   */
   const socialLinks = [
     {
       label: 'Facebook',
@@ -62,13 +56,7 @@ const CustomFooter = () => {
 
   return (
     <Footer
-      logo={
-        <img
-          src='src/assets/images/common/logo.png'
-          alt='Company Logo'
-          width={100}
-        />
-      }
+      logo={<img src='src/assets/images/common/logo.png' alt='Company Logo' width={100}/>}
       companyName='Your Company Name'
       links={footerLinks}
       socialLinks={socialLinks}

@@ -4,16 +4,10 @@ import Header from './Header'
  * Example implementation of the Header component with custom configurations.
  */
 const CustomHeader = () => {
-  /**
-   * EXAMPLE: Handler when the mobile menu button is clicked.
-   */
   const handleMobileMenuClick = () => {
     console.log('Mobile menu opened')
   }
 
-  /**
-   * Navigation links to display in the header, including sub-links for nested navigation.
-   */
   const navLinks = [
     {
       label: 'Home',
@@ -34,13 +28,7 @@ const CustomHeader = () => {
 
   return (
     <Header
-      logo={
-        <img
-          src='src/assets/images/common/logo.png'
-          alt='App Logo'
-          width={100}
-        />
-      }
+      logo={<img src='src/assets/images/common/logo.png' alt='App Logo' width={100}/>}
       title={null}
       links={navLinks}
       userMenu={null}
