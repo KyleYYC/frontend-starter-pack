@@ -1,21 +1,16 @@
-import React from 'react'
 import CustomHeader from './components/organisms/Header/CustomHeader'
-import { Box } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import CustomFooter from './components/organisms/Footer/CustomFooter'
+import AppRoutes from './routes'
+import { AuthProvider } from './contexts/AuthContext'
 
 function App() {
-  const theme = useTheme()
-
-  const appBarHeight =
-    (theme.mixins.toolbar as React.CSSProperties).minHeight || 56
 
   return (
-    <Box>
+    <AuthProvider>
+      <AppRoutes />
       <CustomHeader />
-      <Box sx={{ mt: `${appBarHeight}px` }}>
-        {/* Rest of your app content */}
-      </Box>
-    </Box>
+      <CustomFooter />
+    </AuthProvider>
   )
 }
 
