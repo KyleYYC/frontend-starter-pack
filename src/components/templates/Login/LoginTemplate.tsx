@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Container, TextField, Button, Typography } from '@mui/material'
-import { useAuth } from '../contexts/AuthContext'
+import { useAuth } from '../../../contexts/AuthContext'
 
-function SignIn() {
+function LoginTemplate() {
   const { signIn } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -24,4 +24,4 @@ function SignIn() {
   )
 }
 
-export default SignIn
+export default LoginTemplate

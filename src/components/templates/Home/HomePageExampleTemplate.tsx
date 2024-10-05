@@ -1,5 +1,5 @@
 import {Box, Typography, Button, Grid, Card, Avatar, CardMedia, CardContent, Paper, Stack, TextField, List, ListItem, ListItemAvatar, ListItemText} from '@mui/material'
-import theme from '../../../../theme'
+import theme from '../../../theme'
 import { styles } from './HomePageExampleTemplate.styles'
 
 const appBarHeight = theme.mixins.toolbar?.minHeight || 56

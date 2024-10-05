@@ -1,6 +1,6 @@
 import { Theme } from "@mui/material"
 import { SxProps } from "@mui/system"
-import theme from "../../../../theme"
+import theme from "../../../theme"
 
 export const styles: Record<string, SxProps<Theme>> = {
   heroSection: {
