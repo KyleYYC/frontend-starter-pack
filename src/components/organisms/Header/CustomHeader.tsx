@@ -28,7 +28,13 @@ const CustomHeader = () => {
 
   return (
     <Header
-      logo={<img src='src/assets/images/common/logo.png' alt='App Logo' width={100}/>}
+      logo={
+        <img
+          src='src/assets/images/common/logo.png'
+          alt='App Logo'
+          width={100}
+        />
+      }
       title={null}
       links={navLinks}
       userMenu={null}

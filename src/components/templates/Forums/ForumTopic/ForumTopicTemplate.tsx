@@ -1,6 +1,15 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Container, Typography, List, ListItem, ListItemText, Divider, TextField, Button } from '@mui/material'
+import {
+  Container,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+  TextField,
+  Button,
+} from '@mui/material'
 
 interface ForumPost {
   id: number
@@ -37,7 +46,9 @@ const ForumTopicTemplate = () => {
   if (!topic) {
     return (
       <Container sx={{ mt: 4 }}>
-        <Typography variant="h5" align="center">Topic not found.</Typography>
+        <Typography variant='h5' align='center'>
+          Topic not found.
+        </Typography>
       </Container>
     )
   }
@@ -47,21 +58,34 @@ const ForumTopicTemplate = () => {
   }
 
   return (
-    <Container sx={{ mt: 15, mb: 10}}>
-      <Typography variant="h3">{topic.title}</Typography>
+    <Container sx={{ mt: 15, mb: 10 }}>
+      <Typography variant='h3'>{topic.title}</Typography>
       <List sx={{ mt: 2 }}>
         {topic.posts.map((post) => (
           <React.Fragment key={post.id}>
-            <ListItem alignItems="flex-start">
-              <ListItemText primary={`${post.author} - ${post.date}`} secondary={post.content}/>
+            <ListItem alignItems='flex-start'>
+              <ListItemText
+                primary={`${post.author} - ${post.date}`}
+                secondary={post.content}
+              />
             </ListItem>
             <Divider />
           </React.Fragment>
         ))}
       </List>
       <form onSubmit={handleSubmit}>
-        <TextField label="Your Reply" name="reply" multiline rows={4} fullWidth margin="normal" required/>
-        <Button variant="contained" type="submit" sx={{ mt: 2 }}>Post Reply</Button>
+        <TextField
+          label='Your Reply'
+          name='reply'
+          multiline
+          rows={4}
+          fullWidth
+          margin='normal'
+          required
+        />
+        <Button variant='contained' type='submit' sx={{ mt: 2 }}>
+          Post Reply
+        </Button>
       </form>
     </Container>
   )

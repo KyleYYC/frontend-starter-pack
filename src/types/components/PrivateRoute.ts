@@ -1,3 +1,3 @@
 export interface PrivateRouteProps {
-    children: React.ReactElement
+  children: React.ReactElement
 }

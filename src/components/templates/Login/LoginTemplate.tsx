@@ -13,12 +13,31 @@ function LoginTemplate() {
   }
 
   return (
-    <Container maxWidth="sm" sx={{marginY: '15%'}}>
-      <Typography variant="h4" component="h1">Sign In</Typography>
-      <form onSubmit={handleSubmit} noValidate autoComplete="off">
-        <TextField label="Email" fullWidth margin="normal" required value={email} onChange={(e) => setEmail(e.target.value)}/>
-        <TextField label="Password" type="password" fullWidth margin="normal" required value={password} onChange={(e) => setPassword(e.target.value)}/>
-        <Button type="submit" variant="contained" color="primary" fullWidth>Sign In</Button>
+    <Container maxWidth='sm' sx={{ marginY: '15%' }}>
+      <Typography variant='h4' component='h1'>
+        Sign In
+      </Typography>
+      <form onSubmit={handleSubmit} noValidate autoComplete='off'>
+        <TextField
+          label='Email'
+          fullWidth
+          margin='normal'
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <TextField
+          label='Password'
+          type='password'
+          fullWidth
+          margin='normal'
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <Button type='submit' variant='contained' color='primary' fullWidth>
+          Sign In
+        </Button>
       </form>
     </Container>
   )
