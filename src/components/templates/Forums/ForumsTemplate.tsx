@@ -1,5 +1,12 @@
 import React from 'react'
-import { Container, Typography, List, ListItem, ListItemText, Divider } from '@mui/material'
+import {
+  Container,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+} from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 
 interface ForumTopic {
@@ -27,17 +34,22 @@ const forumTopics: ForumTopic[] = [
     title: 'Support',
     posts: 200,
     lastPostDate: 'April 11, 2023',
-  }
+  },
 ]
 
 const ForumsTemplate = () => (
-  <Container sx={{ mt: 15, mb: 10}}>
-    <Typography variant="h3" align="center">Forums</Typography>
+  <Container sx={{ mt: 15, mb: 10 }}>
+    <Typography variant='h3' align='center'>
+      Forums
+    </Typography>
     <List sx={{ mt: 2 }}>
       {forumTopics.map((topic) => (
         <React.Fragment key={topic.id}>
           <ListItem component={RouterLink} to={`/forums/${topic.id}`}>
-            <ListItemText primary={topic.title} secondary={`Posts: ${topic.posts} | Last Post: ${topic.lastPostDate}`}/>
+            <ListItemText
+              primary={topic.title}
+              secondary={`Posts: ${topic.posts} | Last Post: ${topic.lastPostDate}`}
+            />
           </ListItem>
           <Divider />
         </React.Fragment>

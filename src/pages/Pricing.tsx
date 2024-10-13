@@ -1,7 +1,5 @@
-import PricingTemplate from "../components/templates/Pricing/PricingTemplate"
+import PricingTemplate from '../components/templates/Pricing/PricingTemplate'
 
-const Pricing = () => (
-  <PricingTemplate />
-)
+const Pricing = () => <PricingTemplate />
 
 export default Pricing

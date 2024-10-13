@@ -20,7 +20,7 @@ const blogPostsData: BlogPostData[] = [
     title: 'How to Maximize Productivity',
     content: 'In-depth tips and tricks...',
     date: 'April 5, 2023',
-  }
+  },
 ]
 
 const BlogPostTemplate = () => {
@@ -29,18 +29,22 @@ const BlogPostTemplate = () => {
 
   if (!post) {
     return (
-      <Container sx={{ mt: 15, mb: 10}}>
-        <Typography variant="h5" align="center">Post not found.</Typography>
+      <Container sx={{ mt: 15, mb: 10 }}>
+        <Typography variant='h5' align='center'>
+          Post not found.
+        </Typography>
       </Container>
     )
   }
 
   return (
-    <Container sx={{ mt: 15, mb: 10}}>
-      <Typography variant="h3">{post.title}</Typography>
-      <Typography variant="subtitle2" color="textSecondary">{post.date}</Typography>
+    <Container sx={{ mt: 15, mb: 10 }}>
+      <Typography variant='h3'>{post.title}</Typography>
+      <Typography variant='subtitle2' color='textSecondary'>
+        {post.date}
+      </Typography>
       <Box sx={{ mt: 2 }}>
-        <Typography variant="body1">{post.content}</Typography>
+        <Typography variant='body1'>{post.content}</Typography>
       </Box>
     </Container>
   )

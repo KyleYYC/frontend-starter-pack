@@ -1,6 +1,6 @@
-import { Theme } from "@mui/material"
-import { SxProps } from "@mui/system"
-import theme from "../../../theme"
+import { Theme } from '@mui/material'
+import { SxProps } from '@mui/system'
+import theme from '../../../theme'
 
 export const styles: Record<string, SxProps<Theme>> = {
   heroSection: {
@@ -8,7 +8,7 @@ export const styles: Record<string, SxProps<Theme>> = {
     px: 4,
     backgroundColor: theme.palette.primary.light,
     color: theme.palette.primary.contrastText,
-    textAlign: "center",
+    textAlign: 'center',
   },
   section: {
     py: 8,
@@ -19,14 +19,14 @@ export const styles: Record<string, SxProps<Theme>> = {
     px: 4,
   },
   card: {
-    textAlign: "center",
+    textAlign: 'center',
     p: 3,
   },
   avatar: {
     bgcolor: theme.palette.secondary.main,
     width: 56,
     height: 56,
-    mx: "auto",
+    mx: 'auto',
     mb: 2,
   },
   paper: {
@@ -49,6 +49,6 @@ export const styles: Record<string, SxProps<Theme>> = {
     px: 4,
     backgroundColor: theme.palette.primary.dark,
     color: theme.palette.primary.contrastText,
-    textAlign: "center",
+    textAlign: 'center',
   },
 }

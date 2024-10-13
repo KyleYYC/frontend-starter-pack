@@ -30,36 +30,57 @@ const Login = lazy(() => import('../pages/Login'))
 const Help = lazy(() => import('../pages/Help'))
 const Search = lazy(() => import('../pages/Search'))
 
-const AppRoutes =  () => (
+const AppRoutes = () => (
   <Router>
     <Header />
     <Suspense fallback={<Box>Loading...</Box>}>
       <Routes>
-        <Route path="/" element={<HomePageExampleTemplate />} />
-        <Route path="/features" element={<Features />} />
-        <Route path="/pricing" element={<Pricing />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/careers" element={<Careers />} />
-        <Route path="/press" element={<Press />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        <Route path="/terms-of-service" element={<TermsOfService />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:id" element={<BlogPost />} />
-        <Route path="/developers" element={<Developers />} />
-        <Route path="/forums" element={<Forums />} />
-        <Route path="/forums/:id" element={<ForumTopic />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/help" element={<Help />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/account" element={<PrivateRoute><Account /></PrivateRoute>} />
-        <Route path="/account/settings" element={<PrivateRoute><AccountSettings /></PrivateRoute>} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/newsletter-signup" element={<NewsletterSignUp />} />
-        <Route path="/coming-soon" element={<ComingSoon />} />
-        <Route path="/maintenance" element={<Maintenance />} />
-        <Route path="/password-reset" element={<PasswordReset />} />
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path='/' element={<HomePageExampleTemplate />} />
+        <Route path='/features' element={<Features />} />
+        <Route path='/pricing' element={<Pricing />} />
+        <Route path='/contact' element={<Contact />} />
+        <Route path='/about' element={<AboutUs />} />
+        <Route path='/careers' element={<Careers />} />
+        <Route path='/press' element={<Press />} />
+        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+        <Route path='/terms-of-service' element={<TermsOfService />} />
+        <Route path='/blog' element={<Blog />} />
+        <Route path='/blog/:id' element={<BlogPost />} />
+        <Route path='/developers' element={<Developers />} />
+        <Route path='/forums' element={<Forums />} />
+        <Route path='/forums/:id' element={<ForumTopic />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/help' element={<Help />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route
+          path='/account'
+          element={
+            <PrivateRoute>
+              <Account />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/account/settings'
+          element={
+            <PrivateRoute>
+              <AccountSettings />
+            </PrivateRoute>
+          }
+        />
+        <Route path='/search' element={<Search />} />
+        <Route path='/newsletter-signup' element={<NewsletterSignUp />} />
+        <Route path='/coming-soon' element={<ComingSoon />} />
+        <Route path='/maintenance' element={<Maintenance />} />
+        <Route path='/password-reset' element={<PasswordReset />} />
+        <Route
+          path='/dashboard'
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Suspense>
     <Footer />

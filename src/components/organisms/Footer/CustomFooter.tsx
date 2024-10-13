@@ -56,7 +56,13 @@ const CustomFooter = () => {
 
   return (
     <Footer
-      logo={<img src='src/assets/images/common/logo.png' alt='Company Logo' width={100}/>}
+      logo={
+        <img
+          src='src/assets/images/common/logo.png'
+          alt='Company Logo'
+          width={100}
+        />
+      }
       companyName='Your Company Name'
       links={footerLinks}
       socialLinks={socialLinks}
