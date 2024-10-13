@@ -1,4 +1,4 @@
-//eslint-disable
+// eslint-disable
 import { createContext, useState, useContext, ReactNode } from 'react'
 
 interface AuthContextType {
@@ -12,8 +12,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-  // eslint-disable-next-line
-  const signIn = async (email: string, password: string) => {
+  const signIn = async () => {
     try {
       //TODO Replace with your API endpoint
       //const response = await axios.post('/api/auth/signin', { email, password })
