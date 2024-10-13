@@ -1,3 +1,4 @@
+//eslint-disable
 import { createContext, useState, useContext, ReactNode } from 'react'
 
 interface AuthContextType {
@@ -11,6 +12,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
   const signIn = async (email: string, password: string) => {
     try {
       //TODO Replace with your API endpoint
@@ -42,4 +44,5 @@ function useAuth() {
   return context
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { AuthProvider, useAuth }
