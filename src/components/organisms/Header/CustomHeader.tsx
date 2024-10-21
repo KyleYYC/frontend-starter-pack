@@ -48,7 +48,7 @@ const CustomHeader = () => {
       additionalContent={null}
       elevation={2}
       position='fixed'
-      hideOnScroll={true}
+      hideOnScroll={false}
       themeColor='primary'
     />
   )
