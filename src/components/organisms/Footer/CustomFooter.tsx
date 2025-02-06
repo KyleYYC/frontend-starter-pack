@@ -20,10 +20,7 @@ const CustomFooter = () => {
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Terms of Service', href: '/terms-of-service' },
     ],
-    [
-      { label: 'Resources' },
-      { label: 'Legal', href: '/legal' },
-    ],
+    [{ label: 'Resources' }, { label: 'Legal', href: '/legal' }],
   ]
 
   const socialLinks = [

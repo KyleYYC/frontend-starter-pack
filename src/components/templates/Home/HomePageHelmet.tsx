@@ -2,8 +2,7 @@ import GeniusSEO from '../../molecules/GeniusSEO'
 
 const HomePageHelmet = () => {
   const pageTitle = 'Example Website' // MAX LENGTH IS 60 CHARACTERS DO NOT EXCEED
-  const pageDescription =
-    'Example Descriptions' // MAX LENGTH IS 160 CHARACTERS DO NOT EXCEED
+  const pageDescription = 'Example Descriptions' // MAX LENGTH IS 160 CHARACTERS DO NOT EXCEED
   const url = 'https://example.com/'
   const favicon = url + 'favicon.svg'
   const siteName = 'Example Website'

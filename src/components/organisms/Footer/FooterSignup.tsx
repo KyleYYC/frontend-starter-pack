@@ -6,7 +6,8 @@ const FooterSignup = () => {
     <Box maxWidth={250} textAlign={'start'}>
       <Logo width={150} />
       <Typography fontSize={15} my={1}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad
+        minim veniam.
       </Typography>
     </Box>
   )

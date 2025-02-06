@@ -13,7 +13,7 @@ const {
   isProductsPageDisplayed,
   isPricingPageDisplayed,
   isMoreSubNavDisplayed,
-  isBlogPageDisplayed
+  isBlogPageDisplayed,
 } = GeniusConfiguration.navigation
 
 export const ourServices = [
@@ -73,29 +73,29 @@ export const headerNavigationLinks = [
   { id: 'home', label: 'Home', href: '/' },
   ...(isToolsPageDisplayed
     ? [
-      {
-        id: 'tools',
-        label: 'Tools',
-        href: '/',
-        subLinks: [
-          { id: 'submenu1', label: 'Sub Menu 1', href: '/submenu1' },
-          { id: 'submenu2', label: 'Sub Menu 2', href: '/submenu2' },
-        ],
-      },
-    ]
+        {
+          id: 'tools',
+          label: 'Tools',
+          href: '/',
+          subLinks: [
+            { id: 'submenu1', label: 'Sub Menu 1', href: '/submenu1' },
+            { id: 'submenu2', label: 'Sub Menu 2', href: '/submenu2' },
+          ],
+        },
+      ]
     : []),
   ...(isServicesPageDisplayed
     ? [
-      {
-        id: 'our-services',
-        label: 'Our Services',
-        href: '/',
-        subLinks: ourServicesNavigationLinks.map((link, index) => ({
-          id: `service-${index}`,
-          ...link,
-        })),
-      },
-    ]
+        {
+          id: 'our-services',
+          label: 'Our Services',
+          href: '/',
+          subLinks: ourServicesNavigationLinks.map((link, index) => ({
+            id: `service-${index}`,
+            ...link,
+          })),
+        },
+      ]
     : []),
   ...(isProductsPageDisplayed
     ? [{ id: 'products', label: 'Products', href: '/products' }]
@@ -105,20 +105,19 @@ export const headerNavigationLinks = [
     : []),
   ...(isBlogPageDisplayed
     ? [{ id: 'blog', label: 'Blog', href: '/blog' }]
-    : []
-  ),
+    : []),
   ...(isMoreSubNavDisplayed
     ? [
-      {
-        id: 'more',
-        label: 'More',
-        href: '/',
-        subLinks: [
-          { id: 'submenu1', label: 'Sub Menu 1', href: '/submenu1' },
-          { id: 'submenu2', label: 'Sub Menu 2', href: '/submenu2' },
-        ],
-      },
-    ]
+        {
+          id: 'more',
+          label: 'More',
+          href: '/',
+          subLinks: [
+            { id: 'submenu1', label: 'Sub Menu 1', href: '/submenu1' },
+            { id: 'submenu2', label: 'Sub Menu 2', href: '/submenu2' },
+          ],
+        },
+      ]
     : []),
 ]
 

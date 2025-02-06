@@ -42,8 +42,14 @@ const GeniusConfiguration: GeniusConfigurationType = {
   seo: {
     metaData: {
       robots: { name: 'robots', content: 'index, follow' },
-      viewport: { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      contentType: { 'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8' },
+      viewport: {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1',
+      },
+      contentType: {
+        'http-equiv': 'Content-Type',
+        content: 'text/html; charset=UTF-8',
+      },
       xUACompatible: { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
       ogType: { property: 'og:type', content: 'website' },
       ogLocale: { property: 'og:locale', content: 'en_US' },
@@ -65,7 +71,7 @@ const GeniusConfiguration: GeniusConfigurationType = {
       logo: 'https://www.example.com/logo.png',
       sameAs: [
         'https://www.facebook.com/example',
-        'https://twitter.com/example'
+        'https://twitter.com/example',
       ],
       contactPoint: {
         '@type': 'ContactPoint',
@@ -95,7 +101,7 @@ const GeniusConfiguration: GeniusConfigurationType = {
         },
       },
     },
-  }
+  },
 }
 
 export default GeniusConfiguration

@@ -4,13 +4,10 @@ import CustomHeader from '../../organisms/Header/CustomHeader'
 import { styles } from './HomePage.styles'
 import HomePageHelmet from './HomePageHelmet'
 
-import {
-  Box
-} from '@mui/material'
+import { Box } from '@mui/material'
 import Features from '../../../pages/Features'
 import CareersTemplate from '../Careers/CareersTemplate'
 import ContactTemplate from '../Contact/ContactTemplate'
-
 
 const HomePage = () => {
   return (
@@ -18,21 +15,20 @@ const HomePage = () => {
       <HomePageHelmet />
       <CustomHeader />
       <Box sx={styles.mainContainer}>
-  <Box component="main" sx={styles.mainContent}>
-    <Fade triggerOnce>
-      <Features />
-    </Fade>
+        <Box component='main' sx={styles.mainContent}>
+          <Fade triggerOnce>
+            <Features />
+          </Fade>
 
-    <Fade triggerOnce>
-      <ContactTemplate />
-    </Fade>
+          <Fade triggerOnce>
+            <ContactTemplate />
+          </Fade>
 
-
-    <Fade triggerOnce>
-      <CareersTemplate />
-    </Fade>
-  </Box>
-</Box>
+          <Fade triggerOnce>
+            <CareersTemplate />
+          </Fade>
+        </Box>
+      </Box>
 
       <CustomFooter />
     </>
