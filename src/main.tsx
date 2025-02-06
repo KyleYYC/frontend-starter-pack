@@ -4,12 +4,15 @@ import App from './App.tsx'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from './theme.ts'
 import { CssBaseline } from '@mui/material'
+import { HelmetProvider } from 'react-helmet-async'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App />
-    </ThemeProvider>
-  </StrictMode>
+  <HelmetProvider>
+    <StrictMode>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
+    </StrictMode>
+  </HelmetProvider>
 )

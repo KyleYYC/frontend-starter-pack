@@ -1,54 +1,25 @@
 import Header from './Header'
+import HeaderButtons from '../../molecules/HeaderButtons'
+import { headerNavigationLinks } from '../../../config/constants'
+import Logo from '../../atoms/Logo'
 
-/**
- * Example implementation of the Header component with custom configurations.
- */
 const CustomHeader = () => {
-  const handleMobileMenuClick = () => {
-    console.log('Mobile menu opened')
-  }
-
-  const navLinks = [
-    {
-      label: 'Home',
-      href: '/',
-    },
-    {
-      label: 'Sub Menu',
-      href: '/',
-      subLinks: [
-        { label: 'Sub Menu 1', href: '/submenu1' },
-        { label: 'Sub Menu 2', href: '/submenu2' },
-      ],
-    },
-    { label: 'Features', href: '/features' },
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'Contact', href: '/contact' },
-  ]
-
   return (
     <Header
-      logo={
-        <img
-          src='src/assets/images/common/logo.png'
-          alt='App Logo'
-          width={100}
-        />
-      }
+      logo={<Logo width={100} />}
       title={null}
-      links={navLinks}
+      links={headerNavigationLinks}
       userMenu={null}
-      onMobileMenuClick={handleMobileMenuClick}
-      mobileMenuHeightOption='content'
+      mobileMenuHeightOption='full'
       navLinksPosition='center'
-      showLogo={true}
+      showLogo={false}
       showTitle={true}
       logoAlignment='left'
       titleAlignment='center'
-      additionalContent={null}
+      additionalContent={<HeaderButtons />}
       elevation={2}
       position='fixed'
-      hideOnScroll={false}
+      hideOnScroll={true}
       themeColor='primary'
     />
   )

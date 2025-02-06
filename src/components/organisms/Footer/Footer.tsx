@@ -21,7 +21,7 @@ import { FooterLink, FooterProps } from '../../../types/components/Footer'
 const FooterLinkGroup = ({ group }: { group: FooterLink[] }) => (
   <LinkGroup>
     {group[0]?.label && (
-      <LinkGroupTitle variant='subtitle1'>{group[0].label}</LinkGroupTitle>
+      <LinkGroupTitle variant='h5'>{group[0].label}</LinkGroupTitle>
     )}
     {group.slice(1).map((link) => (
       <FooterLinkAnchor key={link.label} href={link.href || '#'}>
@@ -62,6 +62,7 @@ const Footer = ({
   logoAlignment = 'center',
   companyNameAlignment = 'center',
   additionalContent,
+  additionalContentAlignment,
   elevation = 0,
   customStyles = {},
   copyrightText,
@@ -79,7 +80,7 @@ const Footer = ({
           {companyName}
         </CompanyName>
       )}
-      {additionalContent && (
+      {additionalContent && additionalContentAlignment === 'center' && (
         <Box sx={{ marginBottom: theme.spacing(2) }}>{additionalContent}</Box>
       )}
       {links.length > 0 && (
@@ -90,14 +91,26 @@ const Footer = ({
             alignItems: isMobile ? 'center' : 'flex-start',
           }}
         >
+          {additionalContent && additionalContentAlignment === 'left' && (
+            <Box sx={{ marginBottom: theme.spacing(2) }}>
+              {additionalContent}
+            </Box>
+          )}
           {links.map((group, index) => (
             <FooterLinkGroup key={index} group={group} />
           ))}
+          {additionalContent && additionalContentAlignment === 'right' && (
+            <Box sx={{ marginBottom: theme.spacing(2) }}>
+              {additionalContent}
+            </Box>
+          )}
         </LinksContainer>
       )}
       {socialLinks.length > 0 && <SocialLinks links={socialLinks} />}
       {copyrightText && (
-        <CopyrightText variant='body2'>{copyrightText}</CopyrightText>
+        <CopyrightText variant='body2' gutterBottom>
+          {copyrightText}
+        </CopyrightText>
       )}
     </FooterContainer>
   )

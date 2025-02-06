@@ -11,6 +11,8 @@ interface AlignmentProps {
 
 export const StyledAppBar = styled(AppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
+  backgroundColor: theme.palette.common.black,
+  backgroundImage: 'none',
 }))
 
 export const LogoContainer = styled('div')<AlignmentProps>(({ align }) => ({
@@ -19,7 +21,7 @@ export const LogoContainer = styled('div')<AlignmentProps>(({ align }) => ({
   justifyContent: align,
   textDecoration: 'none',
   color: 'inherit',
-  marginRight: 16,
+  marginLeft: 10,
 }))
 
 export const Title = styled(Typography)<TypographyProps & AlignmentProps>(

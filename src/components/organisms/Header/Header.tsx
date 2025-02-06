@@ -12,7 +12,6 @@ import {
   Title,
   DrawerContent,
 } from './Header.styles'
-import Toolbar from '@mui/material/Toolbar'
 import IconButton from '@mui/material/IconButton'
 import MenuIcon from '@mui/icons-material/Menu'
 import Drawer from '@mui/material/Drawer'
@@ -29,6 +28,15 @@ import ListItemText from '@mui/material/ListItemText'
 import Collapse from '@mui/material/Collapse'
 import ExpandLess from '@mui/icons-material/ExpandLess'
 import ExpandMore from '@mui/icons-material/ExpandMore'
+import { Link, styled } from '@mui/material'
+
+const StyledNavLinkAnchor = styled(NavLinkAnchor)(() => ({
+  textDecoration: 'none',
+  color: 'inherit',
+  '&:hover': {
+    textDecoration: 'underline',
+  },
+}))
 
 /**
  * Component to render navigation links, including nested sub-links for desktop view.
@@ -62,16 +70,17 @@ const NavLinkItem = ({ link }: { link: NavLink }) => {
 
   return (
     <>
-      <NavLinkAnchor
+      <StyledNavLinkAnchor
         href={link.href || '#'}
         onClick={handleOpenMenu}
         aria-haspopup={!!link.subLinks}
         aria-controls={link.subLinks ? `${link.label}-menu` : undefined}
       >
         {link.label}
-      </NavLinkAnchor>
+      </StyledNavLinkAnchor>
       {link.subLinks && (
         <Menu
+          key={link.id}
           id={`${link.label}-menu`}
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}
@@ -120,15 +129,26 @@ const DrawerNavLinkItem = ({ link }: { link: NavLink }) => {
 
   return (
     <>
-      <ListItem onClick={handleClick} component='a' href={link.href}>
-        <ListItemText primary={link.label} />
+      <ListItem onClick={handleClick}>
+        {link.href && !link.subLinks ? (
+          <Link href={link.href || '#'} underline='none'>
+            <ListItemText primary={link.label} />
+          </Link>
+        ) : (
+          <ListItemText primary={link.label} />
+        )}
         {link.subLinks ? open ? <ExpandLess /> : <ExpandMore /> : null}
       </ListItem>
       {link.subLinks && (
         <Collapse in={open} timeout='auto' unmountOnExit>
           <List component='div' disablePadding>
             {link.subLinks.map((subLink) => (
-              <ListItem key={subLink.label} component='a' href={subLink.href}>
+              <ListItem
+                key={subLink.label}
+                component='a'
+                href={subLink.href}
+                sx={{ pl: 4, color: 'accent.main' }}
+              >
                 <ListItemText primary={subLink.label} />
               </ListItem>
             ))}
@@ -156,7 +176,6 @@ const Header = ({
   showTitle = true,
   logoAlignment = 'left',
   titleAlignment = 'left',
-  additionalContent,
   elevation = 4,
   position = 'fixed',
   hideOnScroll = false,
@@ -196,38 +215,55 @@ const Header = ({
       color={themeColor}
       style={customStyles}
     >
-      <Toolbar>
-        {(showLogo || showTitle) && (
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          width: '100%',
+        }}
+      >
+        {/* Logo and Title Container */}
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+          }}
+        >
+          {showLogo && logo && (
+            <Link href='/' underline='none'>
+              <LogoContainer align={logoAlignment}>{logo}</LogoContainer>
+            </Link>
+          )}
+          {showTitle && title && (
+            <Title align={titleAlignment} variant='h6'>
+              {title}
+            </Title>
+          )}
+        </Box>
+
+        {/* Navigation Links for Desktop */}
+        {!isMobile && links.length > 0 && (
           <Box
             sx={{
               display: 'flex',
-              alignItems: 'center',
+              justifyContent: 'center',
               flexGrow: 1,
-              justifyContent: logoAlignment,
             }}
           >
-            {showLogo && logo && (
-              <LogoContainer align={logoAlignment}>{logo}</LogoContainer>
-            )}
-            {showTitle && title && (
-              <Title align={titleAlignment} variant='h6'>
-                {title}
-              </Title>
-            )}
+            <NavLinks links={links} position={navLinksPosition} />
           </Box>
         )}
 
-        {additionalContent && (
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            {additionalContent}
-          </Box>
-        )}
-
-        {!isMobile && links.length > 0 && (
-          <NavLinks links={links} position={navLinksPosition} />
-        )}
-
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        {/* User Menu and Mobile Menu Icon */}
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+            flexGrow: isMobile ? 1 : 0,
+          }}
+        >
           {userMenu}
           {isMobile && (
             <IconButton
@@ -236,12 +272,13 @@ const Header = ({
               aria-label='open navigation menu'
               onClick={toggleDrawer(true)}
               size='large'
+              sx={{ marginRight: 1 }}
             >
               <MenuIcon />
             </IconButton>
           )}
         </Box>
-      </Toolbar>
+      </Box>
     </StyledAppBar>
   )
 
@@ -267,7 +304,7 @@ const Header = ({
           },
         }}
       >
-        <DrawerContent role='presentation' onClick={toggleDrawer(false)}>
+        <DrawerContent role='presentation'>
           <DrawerNavLinks links={links} />
         </DrawerContent>
       </Drawer>
