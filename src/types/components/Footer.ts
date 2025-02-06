@@ -11,7 +11,14 @@ export interface FooterLink {
 }
 
 /** Alignment options for positioning elements within the footer */
-export type Alignment = 'left' | 'center' | 'right'
+export type FooterAlignment = 'left' | 'center' | 'right'
+
+/**
+ * Props for configuring the alignment of elements within the Footer component.
+ */
+export interface AlignmentProps {
+  align?: FooterAlignment
+}
 
 /**
  * Props for configuring the Footer component.
@@ -23,9 +30,10 @@ export interface FooterProps {
   socialLinks?: FooterLink[] /** Social media links to display */
   showLogo?: boolean /** Whether to display the logo */
   showCompanyName?: boolean /** Whether to display the company name */
-  logoAlignment?: Alignment /** Alignment of the logo within the footer */
-  companyNameAlignment?: Alignment /** Alignment of the company name within the footer */
+  logoAlignment?: FooterAlignment /** Alignment of the logo within the footer */
+  companyNameAlignment?: FooterAlignment /** Alignment of the company name within the footer */
   additionalContent?: React.ReactNode /** Additional content to display, such as newsletter signup */
+  additionalContentAlignment?: FooterAlignment /** Alignment of additional content within the footer */
   elevation?: number /** Elevation (shadow depth) of the Footer */
   position?:
     | 'fixed'

@@ -5,6 +5,7 @@ import React from 'react'
  */
 export interface NavLink {
   label: string /** Display label of the navigation link */
+  id: string /** Unique ID of the navigation link */
   href?: string /** URL path the link navigates to - Made optional to accommodate sub-links without a direct href */
   icon?: React.ReactNode /** Optional icon to display alongside the label */
   subLinks?: NavLink[] /** Optional array of sub-links for nested navigation */

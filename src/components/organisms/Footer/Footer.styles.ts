@@ -2,16 +2,13 @@ import { styled } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import Typography, { TypographyProps } from '@mui/material/Typography'
-import { Alignment } from '../../../types/components/Footer'
-
-interface AlignmentProps {
-  align?: Alignment
-}
+import { AlignmentProps } from '../../../types/components/Footer'
 
 export const FooterContainer = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-  padding: theme.spacing(4),
-  marginTop: 'auto',
+  backgroundColor: 'rgba(256, 256, 256, 0.01)',
+  backgroundImage: 'none',
+  paddingLeft: theme.spacing(4),
+  paddingRight: theme.spacing(4),
   component: 'footer',
   role: 'contentinfo',
   textAlign: 'center',
@@ -42,6 +39,7 @@ export const LinksContainer = styled(Box)(({ theme }) => ({
   flexWrap: 'wrap',
   justifyContent: 'space-between',
   marginBottom: theme.spacing(2),
+  paddingTop: theme.spacing(2),
 }))
 
 export const LinkGroup = styled(Box)(({ theme }) => ({
@@ -81,5 +79,6 @@ export const SocialLinkAnchor = styled('a')(({ theme }) => ({
 export const CopyrightText = styled(Typography)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
-  marginTop: theme.spacing(2),
+  paddingTop: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
 }))
